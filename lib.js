@@ -9,17 +9,26 @@ async function DigestMessage(message) {
 }
 
 export async function GenerateGlyiconData(text, width, height){
-    let r = 0;
-    let g = 0;
-    let b = 0;
+    let primary = {r: 0, g: 0, b: 0}
+    let secondary = {r: 0, g: 0, b: 0}
+    let background = {r: 0, g: 0, b: 0}
     let grid = []
 
     let hashArray = await DigestMessage(text)
     let hashArrayReduce = hashArray.reduce((p, c)=>p+c)
 
-    r = Math.abs(Math.floor(Math.sin(hashArrayReduce)*255))
-    g = Math.abs(Math.floor(Math.cos(hashArrayReduce+r)*255))
-    b = Math.abs(Math.floor(Math.tan(hashArrayReduce+g)*255))
+    primary.r = Math.abs(Math.floor(Math.sin(hashArrayReduce)*255))
+    primary.g = Math.abs(Math.floor(Math.cos(hashArrayReduce+primary.r)*255))
+    primary.b = Math.abs(Math.floor(Math.tan(hashArrayReduce+primary.g)*255))
+
+    secondary.r = Math.abs(Math.floor(Math.sin(hashArrayReduce+primary.b)*255))
+    secondary.g = Math.abs(Math.floor(Math.cos(hashArrayReduce+primary.g)*255))
+    secondary.b = Math.abs(Math.floor(Math.tan(hashArrayReduce+primary.r)*255))
+
+    background.r = (primary.r*secondary.r)%255
+    background.g = (primary.g*secondary.g)%255
+    background.b = (primary.b*secondary.b)%255
+
 
     let seedNumber = hashArrayReduce
     function PRNG(){
@@ -35,5 +44,5 @@ export async function GenerateGlyiconData(text, width, height){
         grid.push(row)
     }
 
-    return {r, g, b, grid}
+    return {primary, secondary, background, grid}
 }

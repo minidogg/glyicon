@@ -2,7 +2,6 @@ import { GenerateGlyiconData } from "./lib.js"
 
 const canvas = document.getElementById("output")
 const ctx = canvas.getContext("2d")
-
 function ResizeCanvas(){
     let minMeasure = Math.min(window.innerHeight, window.innerWidth)
     canvas.width = minMeasure*0.5
@@ -10,7 +9,7 @@ function ResizeCanvas(){
 }
 ResizeCanvas()
 
-let data = await GenerateGlyiconData("unluckycrafter")
+let data = await GenerateGlyiconData("unluckycrafter", 5, 5)
 console.log(data)
 
 ctx.fillStyle = `rgb(${data.r}, ${data.g}, ${data.b})`

@@ -27,5 +27,13 @@ export async function GenerateGlyiconData(text, width, height){
         return Math.abs(seedNumber)
     }
 
+    for(let i1 = 0;i1<height;i1++){
+        let row = []
+        for(let i2 = 0;i2<width;i2++){
+            row.push(Math.round(PRNG())==1)
+        }
+        grid.push(row)
+    }
+
     return {r, g, b, grid}
 }

@@ -8,7 +8,7 @@ async function DigestMessage(message) {
     return hashArray;
 }
 
-export async function GenerateGlyiconData(text){
+export async function GenerateGlyiconData(text, width, height){
     let r = 0;
     let g = 0;
     let b = 0;
@@ -20,7 +20,12 @@ export async function GenerateGlyiconData(text){
     r = Math.abs(Math.floor(Math.sin(hashArrayReduce)*255))
     g = Math.abs(Math.floor(Math.cos(hashArrayReduce)*255))
     b = Math.abs(Math.floor(Math.tan(hashArrayReduce)*255))
-    console.log(hashArrayReduce)
+
+    let seedNumber = hashArrayReduce
+    function PRNG(){
+        seedNumber = Math.sin(seedNumber*10)
+        return Math.abs(seedNumber)
+    }
 
     return {r, g, b, grid}
 }

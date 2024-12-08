@@ -55,6 +55,7 @@ document.getElementById("formForm").addEventListener("submit", (ev)=>{
     ev.preventDefault()
     UpdateGlyicon(input.value)
     for(let i = 0;i<document.getElementById("overlap").value;i++){
-        UpdateGlyicon(input.value+input.value+"cool", false)
+        console.log("overlap")
+        UpdateGlyicon(input.value+i, false)
     }
 })

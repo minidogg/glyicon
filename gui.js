@@ -1,5 +1,7 @@
 import { GenerateGlyiconData } from "./lib.js"
 
+const coolMode = false
+
 const canvas = document.getElementById("output")
 const ctx = canvas.getContext("2d")
 function ResizeCanvas(){
@@ -9,8 +11,8 @@ function ResizeCanvas(){
 }
 ResizeCanvas()
 
-async function UpdateGlyicon(text){
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+async function UpdateGlyicon(text, clearCanvas = true){
+    if(clearCanvas==true)ctx.clearRect(0, 0, canvas.width, canvas.height)
     let data = await GenerateGlyiconData(text, 5, 5)
     console.log(data)
 
@@ -27,4 +29,7 @@ async function UpdateGlyicon(text){
 let input = document.getElementById("inputText")
 input.addEventListener("change", ()=>{
     UpdateGlyicon(input.value)
+    if(coolMode){
+        UpdateGlyicon(input.value+input.value+"cool", false)
+    }
 })

@@ -18,8 +18,8 @@ export async function GenerateGlyiconData(text, width, height){
     let hashArrayReduce = hashArray.reduce((p, c)=>p+c)
 
     r = Math.abs(Math.floor(Math.sin(hashArrayReduce)*255))
-    g = Math.abs(Math.floor(Math.cos(hashArrayReduce)*255))
-    b = Math.abs(Math.floor(Math.tan(hashArrayReduce)*255))
+    g = Math.abs(Math.floor(Math.cos(hashArrayReduce+r)*255))
+    b = Math.abs(Math.floor(Math.tan(hashArrayReduce+g)*255))
 
     let seedNumber = hashArrayReduce
     function PRNG(){

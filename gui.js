@@ -18,7 +18,7 @@ async function UpdateGlyicon(text){
     let pixelSize = canvas.width/5
     for(let i1 = 0;i1<data.grid.length;i1++){
         for(let i2 = 0;i2<data.grid[i1].length;i2++){
-            if(data.grid[i1][i2]==true)ctx.fillRect(i2*pixelSize, i1*pixelSize, pixelSize, pixelSize)
+            if(data.grid[i1][i2]==true)ctx.fillRect(i2*pixelSize, i1*pixelSize, pixelSize+1, pixelSize+1)
         }
     }
 

@@ -25,7 +25,9 @@ function Triangle(x, y, width, height, bottom = true){
 }
 
 async function UpdateGlyicon(text, clearCanvas = true){
-    let data = await GenerateGlyiconData(text, 5, 5)
+    const size = document.getElementById("size").value
+
+    let data = await GenerateGlyiconData(text, size, size)
     console.log(data)
 
     if(clearCanvas==true){
@@ -38,7 +40,7 @@ async function UpdateGlyicon(text, clearCanvas = true){
 
     }
 
-    let pixelSize = canvas.width/5
+    let pixelSize = canvas.width/size
     for(let i1 = 0;i1<data.grid.length;i1++){
         for(let i2 = 0;i2<data.grid[i1].length;i2++){
             ctx.fillStyle = `rgb(${data.primary.r}, ${data.primary.g}, ${data.primary.b})`

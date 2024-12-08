@@ -51,11 +51,12 @@ async function UpdateGlyicon(text, clearCanvas = true){
 }
 
 let input = document.getElementById("inputText")
-document.getElementById("formForm").addEventListener("submit", (ev)=>{
+document.getElementById("formForm").addEventListener("submit", async(ev)=>{
     ev.preventDefault()
-    UpdateGlyicon(input.value)
+    await UpdateGlyicon(input.value)
     for(let i = 0;i<document.getElementById("overlap").value;i++){
         console.log("overlap")
-        UpdateGlyicon(input.value+i, false)
+        await UpdateGlyicon(input.value+i, false)
     }
+    document.getElementById("image").src = canvas.toDataURL()
 })

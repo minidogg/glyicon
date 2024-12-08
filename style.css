@@ -1,4 +1,8 @@
-#output{
+#image{
     border: solid 8px black;
     border-radius: 10px;
+}
+
+#output{
+    display: none;
 }

@@ -1,6 +1,13 @@
 const canvas = document.getElementById("output")
 const ctx = canvas.getContext("2d")
 
+function ResizeCanvas(){
+    let minMeasure = Math.min(window.innerHeight, window.innerWidth)
+    canvas.width = minMeasure*0.5
+    canvas.height = minMeasure*0.5
+}
+ResizeCanvas()
+
 let data = await GenerateGlyiconData("unluckycrafter")
 console.log(data)
 

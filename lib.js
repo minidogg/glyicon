@@ -1,12 +1,5 @@
 
 
-function ResizeCanvas(){
-    let minMeasure = Math.min(window.innerHeight, window.innerWidth)
-    canvas.width = minMeasure*0.5
-    canvas.height = minMeasure*0.5
-}
-ResizeCanvas()
-
 async function DigestMessage(message) {
     const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
     const hashBuffer = await window.crypto.subtle.digest("SHA-256", msgUint8); // hash the message

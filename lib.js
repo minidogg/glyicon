@@ -1,5 +1,3 @@
-
-
 async function DigestMessage(message) {
     const msgUint8 = new TextEncoder().encode(message); // encode as (utf-8) Uint8Array
     const hashBuffer = await window.crypto.subtle.digest("SHA-256", msgUint8); // hash the message
@@ -10,7 +8,7 @@ async function DigestMessage(message) {
     return hashArray;
 }
 
-async function GenerateGlyiconData(text){
+export async function GenerateGlyiconData(text){
     let r = 0;
     let g = 0;
     let b = 0;

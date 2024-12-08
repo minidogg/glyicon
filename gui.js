@@ -1,6 +1,5 @@
 import { GenerateGlyiconData } from "./lib.js"
 
-const coolMode = false
 
 const canvas = document.getElementById("output")
 const ctx = canvas.getContext("2d")
@@ -52,9 +51,10 @@ async function UpdateGlyicon(text, clearCanvas = true){
 }
 
 let input = document.getElementById("inputText")
-input.addEventListener("change", ()=>{
+document.getElementById("formForm").addEventListener("submit", (ev)=>{
+    ev.preventDefault()
     UpdateGlyicon(input.value)
-    if(coolMode){
+    for(let i = 0;i<document.getElementById("overlap").value;i++){
         UpdateGlyicon(input.value+input.value+"cool", false)
     }
 })

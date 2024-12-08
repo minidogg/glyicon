@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <label for="bg">Background</label>
-    <input id="bg" type="checkbox">
-    <br>
-    <label for="inputText">Text</label>
-    <input type="text" placeholder="Text" id="inputText">
+    <form id="formForm">
+        <label for="overlap">Overlap</label>
+        <input id="overlap" type="number" min="0" value="0">
+        <br>
+        <label for="bg">Background</label>
+        <input id="bg" type="checkbox">
+        <br>
+        <label for="inputText">Text</label>
+        <input type="text" placeholder="Text" id="inputText">
+    </form>
     <br>
     <canvas id="output"></canvas>
 

@@ -8,6 +8,10 @@ async function DigestMessage(message) {
     return hashArray;
 }
 
+function lerp(start, end, amt = 0.5) {
+    return start + (end - start) * amt;
+}
+
 export async function GenerateGlyiconData(text, width, height){
     let primary = {r: 0, g: 0, b: 0}
     let secondary = {r: 0, g: 0, b: 0}
@@ -25,9 +29,9 @@ export async function GenerateGlyiconData(text, width, height){
     secondary.g = Math.abs(Math.floor(Math.cos(hashArrayReduce+primary.g)*255))
     secondary.b = Math.abs(Math.floor(Math.tan(hashArrayReduce+primary.r)*255))
 
-    background.r = (primary.r*secondary.r)%255
-    background.g = (primary.g*secondary.g)%255
-    background.b = (primary.b*secondary.b)%255
+    background.r = lerp(primary.r, secondary.r)
+    background.g = lerp(primary.g, secondary.g)
+    background.b = lerp(primary.b, secondary.b)
 
 
     let seedNumber = hashArrayReduce

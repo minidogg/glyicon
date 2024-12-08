@@ -30,8 +30,13 @@ async function UpdateGlyicon(text, clearCanvas = true){
     console.log(data)
 
     if(clearCanvas==true){
-        ctx.fillStyle = `rgb(${data.background.r}, ${data.background.g}, ${data.background.b})`
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        if(document.getElementById("bg").checked==true){
+            ctx.fillStyle = `rgb(${data.background.r}, ${data.background.g}, ${data.background.b})`
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+        }else{
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+        }
+
     }
 
     let pixelSize = canvas.width/5

@@ -43,10 +43,12 @@ async function UpdateGlyicon(text, clearCanvas = true){
     let pixelSize = canvas.width/size
     for(let i1 = 0;i1<data.grid.length;i1++){
         for(let i2 = 0;i2<data.grid[i1].length;i2++){
-            ctx.fillStyle = `rgb(${data.primary.r}, ${data.primary.g}, ${data.primary.b})`
-            if(data.grid[i1][i2]==true) Triangle(i2*pixelSize, i1*pixelSize, pixelSize+1, pixelSize+1)
-            ctx.fillStyle = `rgb(${data.secondary.r}, ${data.secondary.g}, ${data.secondary.b})`
-            if(data.grid[i1][i2]==true) Triangle(i2*pixelSize, i1*pixelSize, pixelSize+1, pixelSize+1, false)
+            if(data.grid[i1][i2]==true) {
+                ctx.fillStyle = `rgb(${data.primary.r}, ${data.primary.g}, ${data.primary.b})`
+                Triangle(i2*pixelSize, i1*pixelSize, pixelSize+1, pixelSize+1)
+                ctx.fillStyle = `rgb(${data.secondary.r}, ${data.secondary.g}, ${data.secondary.b})`
+                Triangle(i2*pixelSize, i1*pixelSize, pixelSize+1, pixelSize+1, false)
+            }
         }
     }
 
